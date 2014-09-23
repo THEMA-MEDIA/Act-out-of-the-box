@@ -34,6 +34,10 @@ then
   echo "exited, very well"
   echo
   exit
+else
+  echo
+  echo "Enjoy the ride..."
+  echo
 fi
 
 set -e
@@ -118,8 +122,6 @@ cd ~/
 # setup postfix for mail
 #
 
-# FQDN should not end with a dot
-sudo sed -i -e 's,comcast\.net\.,comcast.net,' /etc/hosts
 # select local only
 sudo apt-get --assume-yes install postfix
 
@@ -129,7 +131,6 @@ sudo apt-get --assume-yes install postfix
 
 sudo apt-get --assume-yes install postgresql
 
-#
-# DONE!
-#
-
+echo
+echo "DONE!!!
+echo

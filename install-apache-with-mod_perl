@@ -1,27 +1,40 @@
 #!/bin/sh
 
-            ########            
-            ########            
-            ########  ########  
-  ########  ########  ########  
-  ########            ########  
-  ########  ########  ########  
-  ########  ########            
-            ########  ########  
-  ########  ########  ########  
-  ########            ########  
-  ########  ########  ########  
-  ########  ########            
-            ########            
-            ########            (c) 2014  www.THEMA-MEDIA.nl
+clear
 
+echo "                                                              "
+echo "            ########                                          "
+echo "            ########                                          "
+echo "            ########  ########                                "
+echo "  ########  ########  ########                                "
+echo "  ########            ########                                "
+echo "  ########  ########  ########                                "
+echo "  ########  ########                                          "
+echo "            ########  ########                                "
+echo "  ########  ########  ########                                "
+echo "  ########            ########                                "
+echo "  ########  ########  ########                                "
+echo "  ########  ########                                          "
+echo "            ########                                          "
+echo "            ########            (c) 2014  www.THEMA-MEDIA.nl  "
+echo "                                                              "
+echo
 echo "You should not run this script unless you know what you are doing."
-echo "Its purpose is to document a process on a shell syntax."
 echo "There is no assurance that it works or does what you mean."
 echo "You have been warned."
-echo ""
-echo "                                                     Alex Muntada"
-exit 1
+echo
+echo "                                Theo van Hoesel & Alex Muntada"
+echo
+read -p "Are you sure you want to continue [Yes] ? " -r CONFIRM
+
+if [ $CONFIRM != "Yes" ]
+then
+  clear
+  echo
+  echo "exited, very well"
+  echo
+  exit
+fi
 
 set -e
 
@@ -119,3 +132,4 @@ sudo apt-get --assume-yes install postgresql
 #
 # DONE!
 #
+

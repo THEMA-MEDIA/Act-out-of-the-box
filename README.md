@@ -1,7 +1,7 @@
 Act out of the box
 ==================
 
-this is a tested set-up to install
+this is a NOT FULLY TESTED set-up to install
 
 * Apache 1.2.42
 * Mod_Perl 1.31

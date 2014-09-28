@@ -29,7 +29,6 @@ sudo -u $ACT_USER bash -c "cat ${INSTALLER}/etc/${ACT_USER}.pub >> /home/${ACT_U
 
 # ask me how to generate the private key, but ofcourse you can create your own pair
 
-sudo cp ${INSTALLER}/etc/banners/git-clone.txt /home/${ACT_USER}/.git-clone.txt
 sudo -u $ACT_USER bash -c "echo ''>> /home/$ACT_USER/.profile"
 sudo -u $ACT_USER bash -c "echo 'export LANG=\"en_US.UTF8\"'>> /home/$ACT_USER/.profile"
 sudo -u $ACT_USER bash -c "echo 'export LC_ALL=\"en_US.UTF8\"'>> /home/$ACT_USER/.profile"

@@ -1,46 +1,20 @@
 #!/bin/sh
 
+#                          _                                    _ 
+#    __ _ _ __   __ _  ___| |__   ___     _     _ __   ___ _ __| |
+#   / _` | '_ \ / _` |/ __| '_ \ / _ \  _| |_  | '_ \ / _ \ '__| |
+#  | (_| | |_) | (_| | (__| | | |  __/ |_   _| | |_) |  __/ |  | |
+#   \__,_| .__/ \__,_|\___|_| |_|\___|   |_|   | .__/ \___|_|  |_|
+#        |_|                                   |_|                
+#                                                                 
+
 clear
-
-echo "                                                              "
-echo "            ########                                          "
-echo "            ########                                          "
-echo "            ########  ########                                "
-echo "  ########  ########  ########                                "
-echo "  ########            ########                                "
-echo "  ########  ########  ########                                "
-echo "  ########  ########                                          "
-echo "            ########  ########                                "
-echo "  ########  ########  ########                                "
-echo "  ########            ########                                "
-echo "  ########  ########  ########                                "
-echo "  ########  ########                                          "
-echo "            ########                                          "
-echo "            ########            (c) 2014  www.THEMA-MEDIA.nl  "
-echo "                                                              "
-echo
-echo "You should not run this script unless you know what you are doing."
-echo "There is no assurance that it works or does what you mean."
-echo "You have been warned."
-echo
-echo "                                Theo van Hoesel & Alex Muntada"
-echo
-read -p "Are you sure you want to continue [Yes] ? " -r CONFIRM
-
-if [ $CONFIRM != "Yes" ]
-then
-  clear
-  echo
-  echo "Exit, very well"
-  echo
-  exit
+if [ -f ${INSTALLER}/etc/banners/apache-with-mod_perl.txt ]; then
+    cat ${INSTALLER}/etc/banners/apache-with-mod_perl.txt
 else
-  echo
-  echo "Enjoy the ride..."
-  echo
+    echo "Starting: apache + perl"
 fi
-
-set -e
+sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1
 
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
@@ -75,7 +49,7 @@ tar xf apache_1.3.42.tar.gz
 tar xf mod_perl-1.31.tar.gz
 tar xf libapreq-1.34.tar.gz
 
-patch -p0 < /vagrant/apache_1.3.42.patch
+patch -p0 < ${INSTALLER}/etc/apache_1.3.42.patch
 
 # mod_perl needs /bin/sh to be bash
 sudo ln -snf bash /bin/sh
@@ -118,25 +92,3 @@ sudo make install
 
 cd ~/
 
-#
-# setup postfix for mail
-#
-
-# select local only
-sudo apt-get --assume-yes install postfix
-
-#
-# setup PostgrSQL
-#
-
-sudo apt-get --assume-yes install postgresql
-
-#
-# install some tools for working on distrubutions
-#
-
-cpanm --sudo Module::Install
-
-echo
-echo "Done !!!"
-echo

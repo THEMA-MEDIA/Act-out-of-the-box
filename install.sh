@@ -27,9 +27,8 @@ echo "                                Theo van Hoesel & Alex Muntada"
 echo
 read -p "Are you sure you want to continue [Yes] ? " -r CONFIRM
 
-if [ $CONFIRM != "Yes" ]
+if [ "$CONFIRM" != "Yes" ]
 then
-  clear
   echo
   echo "Exit, very well"
   echo

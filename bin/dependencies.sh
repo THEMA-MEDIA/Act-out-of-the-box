@@ -1,18 +1,15 @@
 #! /bin/sh
-#                      _           _        _ _ 
-#   _ __  _ __ ___    (_)_ __  ___| |_ __ _| | |
-#  | '_ \| '__/ _ \   | | '_ \/ __| __/ _` | | |
-#  | |_) | | |  __/   | | | | \__ \ || (_| | | |
-#  | .__/|_|  \___|___|_|_| |_|___/\__\__,_|_|_|
-#  |_|           |_____|                        
-#  
 
 clear
-if [ -f ${INSTALLER}/etc/banners/pre_install.txt ]; then
-    cat ${INSTALLER}/etc/banners/pre_install.txt
-else
-    echo "Starting: pre installing Act dependencies..."
-fi
+cat <<'BANNER'
+     _                          _                 _           
+  __| | ___ _ __  ___ _ __   __| | ___ _ __   ___(_) ___  ___ 
+ / _` |/ _ \ '_ \/ _ \ '_ \ / _` |/ _ \ '_ \ / __| |/ _ \/ __|
+| (_| |  __/ |_) | __/ | | | (_| |  __/ | | | (__| |  __/\__ \
+ \__,_|\___| .__/\___|_| |_|\__,_|\___|_| |_|\___|_|\___||___/
+           |_|                                                
+                                                              
+BANNER
 sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1
 
 export LANG="en_US.UTF8"

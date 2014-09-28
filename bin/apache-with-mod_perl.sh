@@ -1,38 +1,19 @@
 #!/bin/sh
 
-#                          _                                    _ 
-#    __ _ _ __   __ _  ___| |__   ___     _     _ __   ___ _ __| |
-#   / _` | '_ \ / _` |/ __| '_ \ / _ \  _| |_  | '_ \ / _ \ '__| |
-#  | (_| | |_) | (_| | (__| | | |  __/ |_   _| | |_) |  __/ |  | |
-#   \__,_| .__/ \__,_|\___|_| |_|\___|   |_|   | .__/ \___|_|  |_|
-#        |_|                                   |_|                
-#                                                                 
-
 clear
-if [ -f ${INSTALLER}/etc/banners/apache-with-mod_perl.txt ]; then
-    cat ${INSTALLER}/etc/banners/apache-with-mod_perl.txt
-else
-    echo "Starting: apache + perl"
-fi
+cat <<'BANNER'
+                        _                                    _ 
+  __ _ _ __   __ _  ___| |__   ___     _     _ __   ___ _ __| |
+ / _` | '_ \ / _` |/ __| '_ \ / _ \  _| |_  | '_ \ / _ \ '__| |
+| (_| | |_) | (_| | (__| | | |  __/ |_   _| | |_) |  __/ |  | |
+ \__,_| .__/ \__,_|\___|_| |_|\___|   |_|   | .__/ \___|_|  |_|
+      |_|                                   |_|                
+                                                               
+BANNER
 sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1
 
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
-
-#
-# prepare apt-get and set-up a Perl develop environment, including cpanminus
-#
-
-sudo sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt/sources.list
-sudo apt-get update
-
-# install developers essentials
-sudo apt-get --assume-yes install vim build-essential libgdbm-dev libperl-dev libgmp3-dev libfreetype6-dev libgif-dev libjpeg62-dev libpng3-dev libtiff4-dev libpq-dev libt1-dev git-core
-
-# use cpanminus to install from CPAN
-wget --no-check-certificate http://cpanmin.us -O cpanm
-chmod a+x cpanm
-sudo mv cpanm /usr/local/bin
 
 #
 # Apache with Mod_Perl

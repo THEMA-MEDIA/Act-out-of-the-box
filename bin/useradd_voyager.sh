@@ -1,22 +1,18 @@
 #!/bin/sh
 
-export ACT_USER="voyager"
-
-#                                _     _ 
-#   _   _ ___  ___ _ __ __ _  __| | __| |
-#  | | | / __|/ _ \ '__/ _` |/ _` |/ _` |
-#  | |_| \__ \  __/ | | (_| | (_| | (_| |
-#   \__,_|___/\___|_|  \__,_|\__,_|\__,_|
-#                                        
-#  
-
 clear
-if [ -f ${INSTALLER}/etc/banners/useradd.txt ]; then
-    cat ${INSTALLER}/etc/banners/useradd.txt
-else
-    echo "Starting: useradd $ACT_USER"
-fi
+cat <<'BANNER'
+                              _     _ 
+ _   _ ___  ___ _ __ __ _  __| | __| |
+| | | / __|/ _ \ '__/ _` |/ _` |/ _` |
+| |_| \__ \  __/ | | (_| | (_| | (_| |
+ \__,_|___/\___|_|  \__,_|\__,_|\__,_|
+                                      
+
+BANNER
 sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1
+
+export ACT_USER="voyager"
 
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"

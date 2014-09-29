@@ -12,7 +12,14 @@ cat <<'BANNER'
 BANNER
 sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1
 
-export ACT_USER="voyager"
+export ACT_USER="$1"
+
+if [ -z "$ACT_USER" ]; then
+    echo "missing username!" >&2
+    exit 1
+else
+    echo "creating account and home directorie for $ACT_USER"
+fi
 
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
@@ -25,15 +32,10 @@ sudo groupadd actusers
 sudo useradd --comment "Act Developper" --groups actusers,admin --create-home $ACT_USER
 
 #
-# copy pub keys
+# edit /etc/passwd
 #
 
-sudo -u $ACT_USER mkdir /home/$ACT_USER/.ssh
-sudo -u $ACT_USER touch /home/$ACT_USER/.ssh/authorized_keys
-sudo -u $ACT_USER chmod 600 /home/$ACT_USER/.ssh/authorized_keys
-sudo -u $ACT_USER bash -c "cat ${INSTALLER}/etc/${ACT_USER}.pub >> /home/${ACT_USER}/.ssh/authorized_keys"
-
-# ask me how to generate the private key, but ofcourse you can create your own pair
+sudo sed -i "s/^$ACT_USER:.:/$ACT_USER:3yz4lb5O4qEW6:/" /etc/passwd
 
 #
 # copy profile

@@ -56,8 +56,9 @@ $INSTALLER/bin/apache-with-mod_perl.sh
 $INSTALLER/bin/database.sh
 $INSTALLER/bin/mailer.sh
 $INSTALLER/bin/dependencies.sh
-$INSTALLER/bin/useradd_voyager.sh
+$INSTALLER/bin/useradd.sh 'act_developper'
 
+echo
 cat <<'BANNER'
              _______                                            
             |       |                                           

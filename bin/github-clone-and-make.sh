@@ -10,7 +10,7 @@ cat <<'BANNER'
  |___/                                 
                                        
 BANNER
-sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo
+sleep 3
 
 #
 # install the Act software from github...

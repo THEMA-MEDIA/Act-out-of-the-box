@@ -8,7 +8,7 @@ cat <<'BANNER'
                                
 
 BANNER
-sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1
+sleep 3
 
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"

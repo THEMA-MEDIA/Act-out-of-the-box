@@ -10,7 +10,7 @@ cat <<'BANNER'
                                       
 
 BANNER
-sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1
+sleep 3
 
 export ACT_USER="$1"
 

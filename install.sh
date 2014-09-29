@@ -44,6 +44,8 @@ set -e
 
 export INSTALLER="/vagrant"
 
+export ACT_USER="act_developper"
+
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
 
@@ -56,7 +58,7 @@ $INSTALLER/bin/apache-with-mod_perl.sh
 $INSTALLER/bin/database.sh
 $INSTALLER/bin/mailer.sh
 $INSTALLER/bin/dependencies.sh
-$INSTALLER/bin/useradd.sh 'act_developper'
+$INSTALLER/bin/useradd.sh $ACT_USER
 
 echo
 cat <<'BANNER'
@@ -81,5 +83,12 @@ sleep 3
 
 echo "we hope you did enjoy the ride..."
 sleep 3
-echo "now exit and re-login as actuser"
+echo
+echo "now exit and run:"
+echo "ssh $ACT_USER@" `hostname` "/local"
+echo "password: *******"
+echo
+echo "once logged run:"
+echo "./.out-of-the-box/github-clone-and-make.sh"
+
 

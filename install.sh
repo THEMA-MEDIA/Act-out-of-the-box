@@ -1,19 +1,5 @@
 #!/bin/bash
 
-#
-# First check that we're only running this script from inside the VM
-#
-if [ `hostname -f` != "mongueurs" -o `id -u` != "0" ]; then
-    echo -e "This script is intended to run as root inside the VM:\n"
-    echo " $ vagrant ssh"
-    echo " vagrant@mongueurs:~$ sudo -i"
-    echo " root@mongueurs:~# /vagrant/install.sh"
-    exit 1
-fi
-
-#
-# Let's roll!
-#
 clear
 cat <<'BANNER'
     _        _   
@@ -32,6 +18,20 @@ cat <<'BANNER'
 
 BANNER
 sleep 3
+
+#
+# First check that we're only running this script from inside the VM
+#
+if [ `hostname -f` != "mongueurs" -o `id -u` != "0" ]; then
+    echo -e "This script is intended to run as root inside the VM:\n"
+    echo " $ vagrant ssh"
+    echo " vagrant@mongueurs:~$ sudo -i"
+    echo " root@mongueurs:~# /vagrant/install.sh"
+fi
+
+#
+# Let's roll!
+#
 
 echo
 echo "You should not run this script unless you know what you are doing."

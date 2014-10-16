@@ -1,5 +1,19 @@
-#!/bin/sh
+#!/bin/bash
 
+#
+# First check that we're only running this script from inside the VM
+#
+if [ `hostname -f` != "mongueurs" -o `id -u` != "0" ]; then
+    echo -e "This script is intended to run as root inside the VM:\n"
+    echo " $ vagrant ssh"
+    echo " vagrant@mongueurs:~$ sudo -i"
+    echo " root@mongueurs:~# /vagrant/install.sh"
+    exit 1
+fi
+
+#
+# Let's roll!
+#
 clear
 cat <<'BANNER'
     _        _   
@@ -43,11 +57,21 @@ fi
 set -e
 
 export INSTALLER="/vagrant"
+export LOGFILE=install.log
 
 export ACT_USER="act_developper"
 
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
+
+#
+# start logging...
+#
+
+echo "Logging progress to $LOGFILE"
+test -e "$LOGFILE" && cp -b $LOGFILE $LOGFILE.bak
+exec > >(tee $LOGFILE)
+exec 2>&1
 
 #
 # where to find everything...

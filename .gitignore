@@ -1,0 +1,7 @@
+*.swp
+*~
+.vagrant/
+*.old
+*.bak
+cpanm
+install.log

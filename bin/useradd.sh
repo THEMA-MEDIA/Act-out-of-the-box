@@ -29,7 +29,7 @@ export LC_ALL="en_US.UTF8"
 #
 
 sudo groupadd actusers
-sudo useradd --comment "Act Developper" --groups actusers,admin --create-home $ACT_USER
+sudo useradd --comment "Act Developer" --groups actusers,admin --create-home $ACT_USER
 
 #
 # edit /etc/passwd

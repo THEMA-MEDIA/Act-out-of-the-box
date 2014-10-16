@@ -59,7 +59,7 @@ set -e
 export INSTALLER="/vagrant"
 export LOGFILE=install.log
 
-export ACT_USER="act_developper"
+export ACT_USER="act_developer"
 
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
@@ -79,11 +79,12 @@ exec 2>&1
 
 $INSTALLER/bin/pre_install.sh
 $INSTALLER/bin/apache-with-mod_perl.sh
-$INSTALLER/bin/database.sh
 $INSTALLER/bin/mailer.sh
 $INSTALLER/bin/dependencies.sh
+$INSTALLER/bin/database.sh
 $INSTALLER/bin/useradd.sh $ACT_USER
 
+clear
 echo
 cat <<'BANNER'
              _______                                            
@@ -108,11 +109,11 @@ sleep 3
 echo "we hope you did enjoy the ride..."
 sleep 3
 echo
-echo "now exit and run:"
-echo "ssh $ACT_USER@" `hostname` "/local"
+echo "now exit and connect to this vagrant box with:"
+echo "ssh $ACT_USER@"`hostname`".local"
 echo "password: *******"
 echo
-echo "once logged run:"
-echo "./.out-of-the-box/github-clone-and-make.sh"
+echo "once logged in, run to clone the latest repository:"
+echo ".out-of-the-box/github-clone-and-make.sh"
 
 

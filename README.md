@@ -1,6 +1,31 @@
 Act out of the box
 ==================
 
+This repository is meant to be a Vagrant build script!
+
+please install Vagrant first
+
+then:
+
+    vagrant up
+    vagrant ssh
+
+
+once connected:
+
+    /vagrant/install.sh
+
+
+Enjoy the ride!!
+
+at this moment PostFix needs manual configuration:
+    
+    [ Local Only ]
+    
+    mongueurs.local
+  
+
+
 this is a NOT FULLY TESTED set-up to install
 
 * Apache 1.2.42

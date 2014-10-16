@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Providers are free to override this if they detect a more appropriate user.
   # By default this is "vagrant," since that is what most public boxes are made
   # as.
-# box_mongueurs.ssh.username = "act_developper"
+# box_mongueurs.ssh.username = "act_developer"
   
   # The path to the private key to use to SSH into the guest machine.
   # By default this is the insecure private key that ships with Vagrant, since
@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # You can also specify multiple private keys by setting this to be an array.
   # This is useful, for example, if you use the default private key to bootstrap
   # the machine, but replace it with perhaps a more secure key later.
-  config.ssh.private_key_path = [ '~/.vagrant.d/insecure_private_key', '~/.ssh/act_developper' ]
+  config.ssh.private_key_path = [ '~/.vagrant.d/insecure_private_key', '~/.ssh/act_developer' ]
   
   end # vm.define. "box_mongueurs"
   

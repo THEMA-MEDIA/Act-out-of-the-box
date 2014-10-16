@@ -52,12 +52,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   
   # apt-cacher-ng running on the host as an apt proxy
-  config.vm.network "private_network", type: "dhcp"
+  #config.vm.network "private_network", ip: "192.168.42.42"
+  config.vm.network :private_network, type: :dhcp
   
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-config.vm.network "public_network"
+  config.vm.network "public_network"
   
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false

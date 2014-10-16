@@ -6,11 +6,15 @@ This repository is meant to be a Vagrant build script!
 please install Vagrant first
 
 then:
+
     vagrant up
     vagrant ssh
 
+
 once connected:
+
     /vagrant/install.sh
+
 
 Enjoy the ride!!
 

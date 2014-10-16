@@ -1,6 +1,14 @@
 Act out of the box
 ==================
 
+NOTE
+====
+
+This is a work in progress and actually would not be needed as such. In the final situation, one would only have to install Vagrent and download a fully pre-installed Act box. These scripts here only are needed when it is NOT Out-of-the-Box and to show what is actually happening inside the installer.
+
+Contributation to enhance the Vagrant Builder are welcome at any time!
+
+
 This repository is meant to be a Vagrant build script!
 
 please install Vagrant first

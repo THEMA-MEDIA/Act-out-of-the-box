@@ -41,13 +41,13 @@ sudo service postgresql-8.4 reload
 # create a Act Database user
 #
 
-sudo -u postgres createuser --no-superuser --createdb --createrole actuser_data
+sudo -u postgres createuser --superuser --createdb --createrole actuser_data
 psql -h localhost -U postgres <<END
 \x
 ALTER USER actuser_data WITH PASSWORD 'md581d59ce8320ef531db2d5093bf78b5a5';
 END
 
-sudo -u postgres createuser --no-superuser --createdb --createrole actuser_wiki
+sudo -u postgres createuser --superuser --createdb --createrole actuser_wiki
 psql -h localhost -U postgres <<END
 \x
 ALTER USER actuser_wiki WITH PASSWORD 'md59cadbf70b9d52b70353a0289fb15021a';

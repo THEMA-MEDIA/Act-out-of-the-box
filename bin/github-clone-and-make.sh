@@ -40,6 +40,7 @@ cpanm --sudo --installdeps --verbose $ACT_HOME
 
 cp -ai $ACT_HOME/eg/conf      $ACT_HOME
 cp -ai $ACT_HOME/skel/actdocs $ACT_HOME
+mkdir $ACT_HOME/var
 
 #
 # $ACT_HOME/conf/act.ini
@@ -51,7 +52,7 @@ conferences = test
 cookie_name = act
 searchlimit = 20
 dir_photos  = photos
-dir_ttc     = /home/act_developer/var
+dir_ttc     = /home/act_developer/act/var
 max_imgsize = 320x200
 
 [database]

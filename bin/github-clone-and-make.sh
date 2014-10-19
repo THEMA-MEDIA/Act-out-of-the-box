@@ -1,4 +1,5 @@
-#/ bin/sh
+#/ bin/bash
+
 
 clear
 cat <<'BANNER'
@@ -11,6 +12,18 @@ cat <<'BANNER'
                                        
 BANNER
 sleep 3
+
+#
+# run this as local user
+#
+
+sudo -u act_developer -i
+cd /home/act_developer
+
+export ACT_USER="/home/act_developer"
+export ACT_HOME="$ACT_USER/act"
+export ACTHOME=$ACT_HOME
+export PERL5LIB="$ACT_HOME/lib"
 
 #
 # install the Act software from github...
@@ -32,7 +45,7 @@ git clone https://github.com/Act-Voyager/Act.git $ACT_HOME
 # just make sure that there is a valid Act config
 #
 
-cpanm --sudo --installdeps --verbose $ACT_HOME
+cpanm --sudo --installdeps $ACT_HOME
 
 #
 # create dir
@@ -59,11 +72,11 @@ max_imgsize = 320x200
 name        = act
 dsn         = dbi:Pg:dbname=act_sample
 user        = actuser_data
-passwd      = use_Perl6;
+passwd      = xyzzy;
 
 test_dsn    = dbi:Pg:dbname=acttest
 test_user   = actuser_data
-test_passwd = use_Perl6;
+test_passwd = xyzzy;
 
 [email]
 sendmail    = /usr/sbin/sendmail
@@ -73,7 +86,7 @@ sender_address = act_tester@mongueurs.local
 [wiki]
 dbname      = act_sample_wiki
 dbuser      = actuser_wiki
-dbpass      = use_Perl6;
+dbpass      = xyzzy;
 
 [payment]
 open      = 0
@@ -120,7 +133,7 @@ pg_dump = /usr/bin/pg_dump
 
 [payment]
 currency = EUR
-type_fake_notify_bcc = vagrant+paymentbcc@localhost
+type_fake_notify_bcc = paymentbcc@localhost
 products = registration
 
 [product_registration]
@@ -152,9 +165,16 @@ rm /tmp/act_developer_http.conf
 # restart Apache httpd
 #
 
-sudo ACTHOME=/home/act_developer/act /usr/local/apache/bin/apachectl graceful
+sudo ACTHOME=$ACT_HOME PERL5LIB=$PERL5LIB /usr/local/apache/bin/apachectl graceful
 
 # cpanm --sudo --notest $ACT_HOME
-cpanm --sudo --verbose $ACT_HOME
+echo "running cpanm... please wait"
+cpanm --sudo $ACT_HOME >/dev/null 
+echo "that usually fail... 1/2605 tests" 1>&2
+sleep 3
+echo "lets do it again...."
+cpanm --sudo $ACT_HOME
+#
+# that should do it
 
 # DONE!!!!

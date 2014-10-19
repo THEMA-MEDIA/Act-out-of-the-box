@@ -44,13 +44,13 @@ sudo service postgresql-8.4 reload
 sudo -u postgres createuser --superuser --createdb --createrole actuser_data
 psql -h localhost -U postgres <<END
 \x
-ALTER USER actuser_data WITH PASSWORD 'md581d59ce8320ef531db2d5093bf78b5a5';
+ALTER USER actuser_data WITH PASSWORD 'md58b5a506eb50be08b4602152e79749da9';
 END
 
 sudo -u postgres createuser --superuser --createdb --createrole actuser_wiki
 psql -h localhost -U postgres <<END
 \x
-ALTER USER actuser_wiki WITH PASSWORD 'md59cadbf70b9d52b70353a0289fb15021a';
+ALTER USER actuser_wiki WITH PASSWORD 'md5d55c7e1c47b492e33a9adcaaf02d3f61';
 END
 
 #
@@ -91,5 +91,5 @@ END
 # Setup or Upgrade the Wiki databases,  (This utility is installed by Wiki::Toolkit.)
 #
 
- wiki-toolkit-setupdb --type postgres --name actwiki         --user actuser_wiki --pass use_Perl6;
-#wiki-toolkit-setupdb --type postgres --name act_sample_wiki --user actuser_wiki --pass use_Perl6;
+ wiki-toolkit-setupdb --type postgres --name actwiki         --user actuser_wiki --pass xyzzy;
+#wiki-toolkit-setupdb --type postgres --name act_sample_wiki --user actuser_wiki --pass xyzzy;

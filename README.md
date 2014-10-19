@@ -70,13 +70,12 @@ Setup / Installation
 
     $ vagrant ssh
 
-7) When inside, sudo to root and run the Act install script
+7) When inside, run the Act install script
 
-    $ sudo -i
-    # /vagrant/install.sh
+    $ /vagrant/install.sh
 
-   Output from the install script is logged in "install.log" in the
-   same directory as itself.
+   Output from the install script is logged in "install.log" in your
+   current working directory.
 
 8) Start hacking!
 

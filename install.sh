@@ -26,7 +26,7 @@ if [ `hostname -f` != "mongueurs" ]; then
     echo -e "This script is intended to run inside the VM:\n"
     echo " $ vagrant ssh"
     echo " vagrant@mongueurs:~$ /vagrant/install.sh"
-    exit 1
+#   exit 1 # below you are questioned if you are sure you want to continue
 fi
 
 #
@@ -111,9 +111,6 @@ sleep 3
 echo
 echo "now exit and connect to this vagrant box with:"
 echo "ssh $ACT_USER@"`hostname`".local"
-echo "password: *******"
 echo
-echo "once logged in, run to clone the latest repository:"
-echo ".out-of-the-box/github-clone-and-make.sh"
 
 

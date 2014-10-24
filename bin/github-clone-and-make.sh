@@ -21,22 +21,14 @@ sudo -u act_developer -i
 cd /home/act_developer
 
 export ACT_USER="/home/act_developer"
-export ACT_HOME="$ACT_USER/act"
-export ACTHOME=$ACT_HOME
-export PERL5LIB="$ACT_HOME/lib"
+export ACTHOME="$ACT_USER/act"
+export PERL5LIB="$ACTHOME/lib"
 
 #
 # install the Act software from github...
 #
 
-# if [ -z "$ACTHOME" ]; then
-#     echo ""                        >> ~/.profile
-#     echo "export ACTHOME=~/act"    >> ~/.profile
-#     echo ""                        >> ~/.profile
-#     export ACTHOME=~/act
-# fi
-
-git clone https://github.com/Act-Voyager/Act.git $ACT_HOME
+git clone https://github.com/Act-Voyager/Act.git $ACTHOME
 
 #
 # cpanm is smart enough to handle the whole distribution at once
@@ -45,21 +37,21 @@ git clone https://github.com/Act-Voyager/Act.git $ACT_HOME
 # just make sure that there is a valid Act config
 #
 
-cpanm --sudo --installdeps $ACT_HOME
+cpanm --sudo --installdeps $ACTHOME
 
 #
 # create dir
 #
 
-cp -ai $ACT_HOME/eg/conf      $ACT_HOME
-cp -ai $ACT_HOME/skel/actdocs $ACT_HOME
-mkdir $ACT_HOME/var
+cp -ai $ACTHOME/eg/conf      $ACTHOME
+cp -ai $ACTHOME/skel/actdocs $ACTHOME
+mkdir $ACTHOME/var
 
 #
-# $ACT_HOME/conf/act.ini
+# $ACTHOME/conf/act.ini
 #
 
-cat >$ACT_HOME/conf/act.ini <<'EOF'
+cat >$ACTHOME/conf/act.ini <<'EOF'
 [general]
 conferences = test
 cookie_name = act
@@ -103,10 +95,10 @@ apikey  = 0123456789ABCDEF0123456789ABCDEF
 EOF
 
 #
-# $ACT_HOME/conf/local.ini
+# $ACTHOME/conf/local.ini
 #
 
-cat >$ACT_HOME/conf/local.ini <<'EOF'
+cat >$ACTHOME/conf/local.ini <<'EOF'
 [general]
 default_language = en
 languages = en
@@ -165,15 +157,15 @@ rm /tmp/act_developer_http.conf
 # restart Apache httpd
 #
 
-sudo ACTHOME=$ACT_HOME PERL5LIB=$PERL5LIB /usr/local/apache/bin/apachectl graceful
+sudo ACTHOME=$ACTHOME PERL5LIB=$PERL5LIB /usr/local/apache/bin/apachectl graceful
 
-# cpanm --sudo --notest $ACT_HOME
+# cpanm --sudo --notest $ACTHOME
 echo "running cpanm... please wait"
-cpanm --sudo $ACT_HOME >/dev/null 
+cpanm --sudo $ACTHOME >/dev/null 
 echo "that usually fail... 1/2605 tests" 1>&2
 sleep 3
 echo "lets do it again...."
-cpanm --sudo $ACT_HOME
+cpanm --sudo $ACTHOME
 #
 # that should do it
 

@@ -22,11 +22,11 @@ sleep 3
 #
 # First check that we're only running this script from inside the VM
 #
-if [ `hostname -f` != "mongueurs" -o `id -u` != "0" ]; then
-    echo -e "This script is intended to run as root inside the VM:\n"
+if [ `hostname -f` != "mongueurs" ]; then
+    echo -e "This script is intended to run inside the VM:\n"
     echo " $ vagrant ssh"
-    echo " vagrant@mongueurs:~$ sudo -i"
-    echo " root@mongueurs:~# /vagrant/install.sh"
+    echo " vagrant@mongueurs:~$ /vagrant/install.sh"
+    exit 1
 fi
 
 #
@@ -57,7 +57,7 @@ fi
 set -e
 
 export INSTALLER="/vagrant"
-export LOGFILE=install.log
+export LOGFILE="$INSTALLER/install.log"
 
 export ACT_USER="act_developer"
 

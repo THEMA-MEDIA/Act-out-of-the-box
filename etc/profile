@@ -1,10 +1,8 @@
-
+#
+# Added bt act-out-of-the-box/bin/useradd.sh script
+#
 export LANG="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
 
-export ACT_HOME="$HOME/act"
+export ACTHOME="$HOME/act"
 export PERL5LIB="$HOME/act/lib"
-
-export ACTHOME="$ACT_HOME"
-
-

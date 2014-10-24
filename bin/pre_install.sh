@@ -23,7 +23,7 @@ sudo sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/ap
 sudo apt-get update
 
 # install developers essentials
-sudo apt-get --assume-yes install vim build-essential libgdbm-dev libperl-dev libgmp3-dev libfreetype6-dev libgif-dev libjpeg62-dev libpng3-dev libtiff4-dev libpq-dev libt1-dev git-core
+sudo apt-get --assume-yes install vim build-essential libgdbm-dev libperl-dev libgmp3-dev libfreetype6-dev libgif-dev libjpeg62-dev libpng3-dev libtiff4-dev libpq-dev libt1-dev git-core perl-doc tree
 
 # use cpanminus to install from CPAN
 wget --no-check-certificate http://cpanmin.us -O cpanm

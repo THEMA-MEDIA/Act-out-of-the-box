@@ -21,3 +21,9 @@ export LC_ALL="en_US.UTF8"
 
 cp ${INSTALLER}/etc/cpanfile .
 cpanm --verbose --sudo --installdeps .
+
+#
+# pre_install major dependencies for development on Act Voyager
+#
+
+cpanm --sudo Moo DBIx::Class Dancer2

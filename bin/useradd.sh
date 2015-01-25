@@ -47,7 +47,10 @@ sudo -u $NEW_USER bash -c "cat ${INSTALLER}/etc/profile >> /home/${NEW_USER}/.pr
 # copy unsafe Vagrant keys to the new user, so one can use 'vagrant ssh'
 #
 
-sudo cp -r ~/.ssh /home/$NEW_USER/
+# sudo cp -r ~/.ssh /home/$NEW_USER/
+sudo mkdir /home/$NEW_USER/.ssh
+sudo wget  --no-check-certificate https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -O /home/$NEW_USER/.ssh/authorized_keys
+
 sudo chown $NEW_USER:$NEW_USER /home/$NEW_USER/.ssh
 sudo chown $NEW_USER:$NEW_USER /home/$NEW_USER/.ssh/authorized_keys
 

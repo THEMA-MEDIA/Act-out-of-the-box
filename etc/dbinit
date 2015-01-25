@@ -5,7 +5,7 @@ CREATE TABLE schema
 (
     current_version integer NOT NULL
 );
-INSERT INTO schema VALUES (10);
+INSERT INTO schema VALUES (11);
 
 /*** users' related tables ***/
 
@@ -139,6 +139,14 @@ CREATE TABLE talks
 
     level        integer DEFAULT 1,
     lang         text,
+
+    /* for video's */
+    teaser       text,
+    url_video1   text,
+    url_video2   text,
+    url_video3   text,
+    hide_details boolean DEFAULT false NOT NULL,
+    allow_record boolean DEFAULT true  NOT NULL,
 
     FOREIGN KEY( user_id  ) REFERENCES users( user_id )
 );

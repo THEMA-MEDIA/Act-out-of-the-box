@@ -69,22 +69,29 @@ psql -h localhost -U postgres acttest < ${INSTALLER}/etc/dbinit
 # they come up with some odd names
 #
 
-sudo -u postgres pg_restore -O -C -d template1 /vagrant/actdb
-sudo -u postgres pg_restore -O -C -d template1 /vagrant/actwikidb
+#####sudo -u postgres pg_restore -O -C -d template1 /vagrant/actdb
+#####sudo -u postgres pg_restore -O -C -d template1 /vagrant/actwikidb
+#####
+#####psql -h localhost -U postgres <<END
+#####\x
+#####ALTER DATABASE actdev     RENAME TO act_sample;
+#####ALTER DATABASE actdevwiki RENAME TO act_sample_wiki;
+#####END
 
-psql -h localhost -U postgres <<END
-\x
-ALTER DATABASE actdev     RENAME TO act_sample;
-ALTER DATABASE actdevwiki RENAME TO act_sample_wiki;
-END
+#####psql -h localhost -U postgres <<END
+#####\x
+#####GRANT ALL PRIVILEGES ON DATABASE act             TO actuser_data;
+#####GRANT ALL PRIVILEGES ON DATABASE acttest         TO actuser_data;
+#####GRANT ALL PRIVILEGES ON DATABASE actwiki         TO actuser_wiki;
+#####GRANT ALL PRIVILEGES ON DATABASE act_sample      TO actuser_data;
+#####GRANT ALL PRIVILEGES ON DATABASE act_sample_wiki TO actuser_wiki;
+#####END
 
 psql -h localhost -U postgres <<END
 \x
 GRANT ALL PRIVILEGES ON DATABASE act             TO actuser_data;
 GRANT ALL PRIVILEGES ON DATABASE acttest         TO actuser_data;
 GRANT ALL PRIVILEGES ON DATABASE actwiki         TO actuser_wiki;
-GRANT ALL PRIVILEGES ON DATABASE act_sample      TO actuser_data;
-GRANT ALL PRIVILEGES ON DATABASE act_sample_wiki TO actuser_wiki;
 END
 
 #
